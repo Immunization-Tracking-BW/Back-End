@@ -32,10 +32,7 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: {
-      database: productionDBConnection
-    },
-    useNullAsDefault: true,
+    connection: productionDBConnection,
     migrations: {
       directory: "./database/migrations"
     },
