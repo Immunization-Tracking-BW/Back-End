@@ -1,4 +1,5 @@
 // Update with your config settings.
+require("dotenv").config();
 
 const localPG = {
   host: "localhose",
@@ -32,6 +33,7 @@ module.exports = {
 
   production: {
     client: "pg",
+    useNullAsDefault: true,
     connection: productionDBConnection,
     migrations: {
       directory: "./database/migrations"
