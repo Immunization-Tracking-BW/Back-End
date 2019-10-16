@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const secret = require("../config/secrets.js");
 
 module.exports = function getJwt(user) {
   const payload = {
@@ -10,5 +11,5 @@ module.exports = function getJwt(user) {
     expiresIn: "1 week"
   };
 
-  return jwt.sign(payload, process.env.JWTSecret, options);
+  return jwt.sign(payload, secret.jwtSecret, options);
 };

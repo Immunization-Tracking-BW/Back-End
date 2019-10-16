@@ -16,8 +16,6 @@ function add(userType, user) {
 }
 
 function find(userType, filterBy) {
-  console.log(userType);
-  console.log(filterBy);
   return db(userType).where(filterBy);
 }
 
