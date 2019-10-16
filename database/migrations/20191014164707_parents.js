@@ -4,11 +4,12 @@ exports.up = function(knex) {
 
     parent.string("firstName").notNullable();
     parent.string("lastName").notNullable();
+    parent.string("phoneNumber").notNullable();
     parent
       .string("email")
       .notNullable()
       .unique();
-    parent.string("phoneNumber").notNullable();
+    parent.string("password").notNullable();
   });
 };
 

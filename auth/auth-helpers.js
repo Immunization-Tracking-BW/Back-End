@@ -3,11 +3,12 @@ const jwt = require("jsonwebtoken");
 module.exports = function getJwt(user) {
   const payload = {
     subject: user.id,
-    username: user.username,
+    email: user.email,
     jwtId: 1
   };
   const options = {
-    expiresIn: "1 day"
+    expiresIn: "1 week"
   };
-  return jwt.sign(payload, process.env.jwtSecret, options);
+
+  return jwt.sign(payload, process.env.JWTSecret, options);
 };
