@@ -31,18 +31,13 @@ function add(childid, providerid, immunization) {
     child_id: childid,
     provider_id: providerid
   };
-  console.log(addImmunization);
+
   return db("immunizations").insert(addImmunization);
 }
 
-function update(childid, id, providerid, changes) {
-  const addChanges = {
-    ...changes,
-    child_id: childid,
-    provider_id: providerid
-  };
-
+function update(id, changes) {
+  console.log(changes);
   return db("immunizations")
-    .insert(addChanges)
-    .where({ id });
+    .where({ id })
+    .update(changes);
 }

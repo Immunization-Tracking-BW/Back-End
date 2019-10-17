@@ -34,9 +34,9 @@ router.post("/:childid/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 
-  const { vaccine, date, location } = immuization;
+  const { vaccine, date, location, immunizationCompleted } = immuization;
 
-  if (!vaccine || !date || !location) {
+  if (!vaccine || !date || !location || !immunizationCompleted) {
     res.status(400).json({ message: "Missing a field." });
   }
 
@@ -50,26 +50,23 @@ router.post("/:childid/immunization/:providerid", (req, res) => {
 });
 
 //Update a child's record
-router.put(
-  "/:childid/immunization/:immunizationid/provider/:providerid",
-  (req, res) => {
-    const { childid, immunizationid, providerid } = req.params;
-    console.log(providerid);
-    const changes = req.body;
-    const { vaccine, immunizationCompleted, date, location } = changes;
+router.put("/immunization/:immunizationid", (req, res) => {
+  const { immunizationid } = req.params;
 
-    if (!vaccine || !immunizationCompleted || !date || !location) {
-      res.status(400).json({ message: "Missing a field." });
-    }
+  const changes = req.body;
+  const { vaccine, immunizationCompleted, date, location } = changes;
 
-    Immuization.update(childid, immunizationid, providerid, changes)
-      .then(udpated => {
-        res.status(200).json({ message: "Immunization has been updated." });
-      })
-      .catch(err => {
-        res.status(500).json({ message: "Error accessing database." });
-      });
+  if (!vaccine || !immunizationCompleted || !date || !location) {
+    res.status(400).json({ message: "Missing a field." });
   }
-);
+
+  Immuization.update(immunizationid, changes)
+    .then(udpated => {
+      res.status(200).json({ message: "Immunization has been updated." });
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Error accessing database." });
+    });
+});
 
 module.exports = router;
