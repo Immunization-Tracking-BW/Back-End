@@ -1,9 +1,9 @@
 const router = require("express").Router();
-
+const restricted = require("../auth/restricted-middleware.js");
 const Immuization = require("./immunization-model.js");
 
 //Get all records for a child
-router.get("/:childid/immunization", (req, res) => {
+router.get("/:childid/immunization", restricted, (req, res) => {
   const { childid } = req.params;
 
   Immuization.get(childid)
@@ -16,7 +16,7 @@ router.get("/:childid/immunization", (req, res) => {
 });
 
 //Get a record for a child
-router.get("/immunization/:immunizationid", (req, res) => {
+router.get("/immunization/:immunizationid", restricted, (req, res) => {
   const { immunizationid } = req.params;
 
   Immuization.getBy(immunizationid)
@@ -30,7 +30,7 @@ router.get("/immunization/:immunizationid", (req, res) => {
 });
 
 //Add a child's record
-router.post("/:childid/immunization/:providerid", (req, res) => {
+router.post("/:childid/immunization/:providerid", restricted, (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 
@@ -50,7 +50,7 @@ router.post("/:childid/immunization/:providerid", (req, res) => {
 });
 
 //Update a child's record
-router.put("/immunization/:immunizationid", (req, res) => {
+router.put("/immunization/:immunizationid", restricted, (req, res) => {
   const { immunizationid } = req.params;
 
   const changes = req.body;

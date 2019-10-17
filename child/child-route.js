@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const Child = require("./child-model.js");
+const restricted = require("../auth/restricted-middleware.js");
 
 //Get all child of a parent
 
-router.get("/:parentid/children", (req, res) => {
+router.get("/:parentid/children", restricted, (req, res) => {
   const { parentid } = req.params;
 
   Child.get(parentid)
@@ -15,7 +16,7 @@ router.get("/:parentid/children", (req, res) => {
     });
 });
 
-router.get("/children/:childid", (req, res) => {
+router.get("/children/:childid", restricted, (req, res) => {
   const { childid } = req.params;
 
   Child.getBy(childid)
@@ -28,7 +29,7 @@ router.get("/children/:childid", (req, res) => {
     });
 });
 
-router.put("/children/:childid", (req, res) => {
+router.put("/children/:childid", restricted, (req, res) => {
   const { childid } = req.params;
   const changes = req.body;
 
@@ -46,8 +47,8 @@ router.put("/children/:childid", (req, res) => {
     });
 });
 
-router.delete("/:parentid/children/:childid", (req, res) => {
-  const { parentid, childid } = req.params;
+router.delete("/children/:childid", restricted, (req, res) => {
+  const { childid } = req.params;
 
   Child.remove(childid)
     .then(child => {
@@ -58,7 +59,7 @@ router.delete("/:parentid/children/:childid", (req, res) => {
     });
 });
 
-router.post("/:parentid/children", (req, res) => {
+router.post("/:parentid/children", restricted, (req, res) => {
   const child = req.body;
   const { parentid } = req.params;
   const { firstName, lastName, dateOfBirth, socialSecuirtyNumber } = child;
