@@ -17,7 +17,7 @@ router.get("/:childid/immunization", (req, res) => {
 
 //Get a record for a child
 router.get("/immunization/:immunizationid", (req, res) => {
-  const { immunizationid } = req.params;
+  const { childid, immunizationid } = req.params;
 
   Immuization.getBy(immunizationid)
     .first()
@@ -30,7 +30,7 @@ router.get("/immunization/:immunizationid", (req, res) => {
 });
 
 //Add a child's record
-router.post("/:childid/immunization/:providerid", (req, res) => {
+router.post("/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 

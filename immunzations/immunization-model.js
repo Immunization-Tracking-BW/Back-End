@@ -8,7 +8,6 @@ module.exports = {
 };
 
 function get(childid) {
-  console.log(childid);
   return db("immunizations")
     .innerJoin("child", "immunizations.child_id", "child.id")
     .select(
@@ -23,17 +22,7 @@ function get(childid) {
 }
 
 function getBy(id) {
-  return db("immunizations")
-    .innerJoin("child", "immunizations.child_id", "child.id")
-    .select(
-      "immunizations.id",
-      "immunizations.vaccine",
-      "immunizations.immunizationCompleted",
-      "immunizations.date",
-      "immunizations.location",
-      "immunizations.grantPermission"
-    )
-    .where("immunizations.child_id", childid);
+  return db("immunizations").where({ id });
 }
 
 function add(childid, immunization, providerid) {
