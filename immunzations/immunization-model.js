@@ -25,12 +25,13 @@ function getBy(id) {
   return db("immunizations").where({ id });
 }
 
-function add(childid, immunization, providerid) {
+function add(childid, providerid, immunization) {
   const addImmunization = {
     ...immunization,
     child_id: childid,
     provider_id: providerid
   };
+  console.log(addImmunization);
   return db("immunizations").insert(addImmunization);
 }
 

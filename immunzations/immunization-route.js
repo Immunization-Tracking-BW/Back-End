@@ -17,7 +17,7 @@ router.get("/:childid/immunization", (req, res) => {
 
 //Get a record for a child
 router.get("/immunization/:immunizationid", (req, res) => {
-  const { childid, immunizationid } = req.params;
+  const { immunizationid } = req.params;
 
   Immuization.getBy(immunizationid)
     .first()
@@ -30,7 +30,7 @@ router.get("/immunization/:immunizationid", (req, res) => {
 });
 
 //Add a child's record
-router.post("/immunization/:providerid", (req, res) => {
+router.post("/:childid/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 
@@ -40,7 +40,7 @@ router.post("/immunization/:providerid", (req, res) => {
     res.status(400).json({ message: "Missing a field." });
   }
 
-  Immuization.add(childid, immuization, providerid)
+  Immuization.add(childid, providerid, immuization)
     .then(added => {
       res.status(200).json({ message: "Immunization has been added." });
     })
