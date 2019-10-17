@@ -25,8 +25,12 @@ function getBy(id) {
   return db("child").where({ id });
 }
 
-function add(child) {
-  return db("child").insert(child);
+function add(parentid, child) {
+  const addChild = {
+    ...child,
+    parent_id: parentid
+  };
+  return db("child").insert(addChild);
 }
 
 function update(id, changes) {

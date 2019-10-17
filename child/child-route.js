@@ -7,16 +7,16 @@ router.get("/:parentid/children", (req, res) => {
   const { parentid } = req.params;
 
   Child.get(parentid)
-    .then(child => {
-      res.status(200).json(child);
+    .then(children => {
+      res.status(200).json(children);
     })
     .catch(err => {
       res.status(500).json({ message: "Error accessing database." });
     });
 });
 
-router.get("/:parentid/children/:childid", (req, res) => {
-  const { parentid, childid } = req.params;
+router.get("/children/:childid", (req, res) => {
+  const { childid } = req.params;
 
   Child.getBy(childid)
     .first()
@@ -28,21 +28,8 @@ router.get("/:parentid/children/:childid", (req, res) => {
     });
 });
 
-router.get("/:parentid/children/:childid", (req, res) => {
-  const { parentid, childid } = req.params;
-
-  Child.getBy(childid)
-    .first()
-    .then(child => {
-      res.status(200).json(child);
-    })
-    .catch(err => {
-      res.status(500).json({ message: "Error accessing database." });
-    });
-});
-
-router.put("/:parentid/children/:childid", (req, res) => {
-  const { parentid, childid } = req.params;
+router.put("/children/:childid", (req, res) => {
+  const { childid } = req.params;
   const changes = req.body;
 
   const { firstName, lastName, dateOfBirth, socialSecuirtyNumber } = changes;
@@ -71,14 +58,15 @@ router.delete("/:parentid/children/:childid", (req, res) => {
     });
 });
 
-router.post("/children", (req, res) => {
+router.post("/:parentid/children", (req, res) => {
   const child = req.body;
+  const { parentid } = req.params;
   const { firstName, lastName, dateOfBirth, socialSecuirtyNumber } = child;
 
   if (!firstName || !lastName || !dateOfBirth || !socialSecuirtyNumber) {
     return res.status(400).json({ message: "Missing fields." });
   }
-  Child.add(child)
+  Child.add(parentid, child)
     .then(added => {
       res.status(200).json({ message: "Child has been added." });
     })
