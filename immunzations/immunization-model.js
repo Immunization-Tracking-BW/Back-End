@@ -31,12 +31,13 @@ function add(childid, providerid, immunization) {
     child_id: childid,
     provider_id: providerid
   };
-  console.log(addImmunization);
+
   return db("immunizations").insert(addImmunization);
 }
 
 function update(id, changes) {
+  console.log(changes);
   return db("immunizations")
     .where({ id })
-    .insert(changes);
+    .update(changes);
 }

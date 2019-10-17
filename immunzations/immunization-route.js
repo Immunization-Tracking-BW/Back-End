@@ -34,9 +34,9 @@ router.post("/:childid/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 
-  const { vaccine, date, location } = immuization;
+  const { vaccine, date, location, immunizationCompleted } = immuization;
 
-  if (!vaccine || !date || !location) {
+  if (!vaccine || !date || !location || !immunizationCompleted) {
     res.status(400).json({ message: "Missing a field." });
   }
 
