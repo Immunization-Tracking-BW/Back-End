@@ -2,7 +2,10 @@ const db = require("../database/db-config.js");
 
 module.exports = {
   get,
-  add
+  getBy,
+  add,
+  update,
+  remove
 };
 
 function get(parentid) {
@@ -18,6 +21,22 @@ function get(parentid) {
     .where("child.parent_id", parentid);
 }
 
+function getBy(id) {
+  return db("child").where({ id });
+}
+
 function add(child) {
   return db("child").insert(child);
+}
+
+function update(id, changes) {
+  return db("child")
+    .where({ id })
+    .update(changes);
+}
+
+function remove(id) {
+  return db("child")
+    .where({ id })
+    .del();
 }
