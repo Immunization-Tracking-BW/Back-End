@@ -5,6 +5,7 @@ const express = require("express"),
 const server = express();
 
 const authRoute = require("../auth/auth-route.js");
+const childRoute = require("../child/child-route.js");
 
 //global middleware
 server.use(helmet());
@@ -13,5 +14,6 @@ server.use(express.json());
 
 //Routes
 server.use("/auth", authRoute);
+server.use("/parent", childRoute);
 
 module.exports = server;
