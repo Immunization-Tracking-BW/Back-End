@@ -15,7 +15,7 @@ function get(id) {
       "child.firstName",
       "child.lastName",
       "child.dateOfBirth",
-      "child.socialSecuirtyNumber"
+      "child.socialSecurityNumber"
     )
     .where("providers.id", id);
 }
