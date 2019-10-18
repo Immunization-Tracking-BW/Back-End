@@ -25,6 +25,7 @@ Live Site: []
 
 ### Immunization Routes
 
-| Method | Endpoint                       | Access Control    | Description |
-| ------ | ------------------------------ | ----------------- | ----------- |
-| GET    | `/child/:childid/immunization` | Takes JSON with " |
+| Method | Endpoint                              | Access Control | Description                     |
+| ------ | ------------------------------------- | -------------- | ------------------------------- |
+| GET    | `/child/:childid/immunization`        | All users      | Return a child's immunizations. |
+| GET    | `/child/immunization/:immunizationid` | all user       |
