@@ -72,7 +72,7 @@ router.post("/login/:userType", (req, res) => {
         const token = getJwt(user);
         res.status(200).json({
           message: `${user.firstName || user.orgName} is logged in.`,
-          token
+          token, user
         });
       } else {
         res.status(400).json({ message: "Email or password is invalid." });
