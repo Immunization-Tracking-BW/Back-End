@@ -96,7 +96,7 @@ Live Site: []
     id: UUID
     vaccine: string
     immunizationCompleted: boolean
-    completedDate: string
+    date: string
     location: string
     grantPermission: boolean
     child_id: integer
