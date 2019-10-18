@@ -1,7 +1,5 @@
 # ImmuTrack
 
-Live Site: []
-
 ## Endpoints
 
 ### Auth Routes
