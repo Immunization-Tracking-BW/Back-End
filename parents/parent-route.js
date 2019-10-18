@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Child = require("./child-model.js");
+const Parent = require("./parent-model.js");
 const restricted = require("../auth/restricted-middleware.js");
 
 //Get all child of a parent
@@ -7,7 +7,7 @@ const restricted = require("../auth/restricted-middleware.js");
 router.get("/:parentid/children", (req, res) => {
   const { parentid } = req.params;
 
-  Child.get(parentid)
+  Parent.get(parentid)
     .then(children => {
       res.status(200).json(children);
     })
@@ -19,7 +19,7 @@ router.get("/:parentid/children", (req, res) => {
 router.get("/children/:childid", (req, res) => {
   const { childid } = req.params;
 
-  Child.getBy(childid)
+  Parent.getBy(childid)
     .first()
     .then(child => {
       res.status(200).json(child);
@@ -38,7 +38,7 @@ router.put("/children/:childid", (req, res) => {
   if (!firstName || !lastName || !dateOfBirth || !socialSecuirtyNumber) {
     return res.status(400).json({ message: "Missing fields." });
   }
-  Child.update(childid, changes)
+  Parent.update(childid, changes)
     .then(child => {
       res.status(200).json({ message: "Child has been updated." });
     })
@@ -50,7 +50,7 @@ router.put("/children/:childid", (req, res) => {
 router.delete("/children/:childid", (req, res) => {
   const { childid } = req.params;
 
-  Child.remove(childid)
+  Parent.remove(childid)
     .then(child => {
       res.status(200).json({ message: "Child has been delete." });
     })
@@ -67,7 +67,7 @@ router.post("/:parentid/children", (req, res) => {
   if (!firstName || !lastName || !dateOfBirth || !socialSecuirtyNumber) {
     return res.status(400).json({ message: "Missing fields." });
   }
-  Child.add(parentid, child)
+  Parent.add(parentid, child)
     .then(added => {
       res.status(200).json({ message: "Child has been added." });
     })
