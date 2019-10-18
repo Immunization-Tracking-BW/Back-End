@@ -37,3 +37,19 @@ Live Site: []
 | Method | Endpoint                         | Access Control | Description                                         |
 | ------ | -------------------------------- | -------------- | --------------------------------------------------- |
 | GET    | `/provider/:providerid/children` | providers      | Returns a list of child associated with a provider. |
+
+## Data Model
+
+### Parents
+
+---
+
+```{
+    id: UUID
+    firstName: string
+    lastName: string
+    phoneNumber: string
+    email: string
+    password: string
+}
+```
