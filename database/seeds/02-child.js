@@ -10,7 +10,7 @@ const createFakeChild = () => ({
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
   dateOfBirth: faker.date.past(),
-  socialSecurityNumber: faker.address.countryCode(),
+  socialSecuirtyNumber: faker.address.countryCode(),
   parent_id: getRandomInt(1, 3)
 });
 

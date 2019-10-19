@@ -16,7 +16,7 @@ function get(parentid) {
       "child.firstName",
       "child.lastName",
       "child.dateOfBirth",
-      "child.socialSecurityNumber"
+      "child.socialSecuirtyNumber"
     )
     .where("child.parent_id", parentid);
 }

@@ -5,7 +5,7 @@ exports.up = function(knex) {
     child.string("firstName").notNullable();
     child.string("lastName").notNullable();
     child.string("dateOfBirth").notNullable();
-    child.string("socialSecurityNumber").notNullable();
+    child.string("socialSecuirtyNumber").notNullable();
     child
       .integer("parent_id")
       .unsigned()
