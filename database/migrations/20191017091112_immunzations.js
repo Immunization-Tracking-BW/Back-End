@@ -13,6 +13,7 @@ exports.up = function(knex) {
       .boolean("grantPermission")
       .defaultTo("false")
       .notNullable();
+    immu.string("nextImmunizationDate");
     immu
       .integer("child_id")
       .unsigned()

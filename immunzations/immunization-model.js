@@ -16,7 +16,8 @@ function get(childid) {
       "immunizations.immunizationCompleted",
       "immunizations.date",
       "immunizations.location",
-      "immunizations.grantPermission"
+      "immunizations.grantPermission",
+      "immunizations.nextImmunizationDate"
     )
     .where("immunizations.child_id", childid);
 }
