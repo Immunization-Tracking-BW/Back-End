@@ -59,6 +59,7 @@ exports.seed = async function(knex, Promoise) {
     fakeImmunization.push(createFakeImmunizationDone());
     fakeImmunization.push(createFakeImmunizationOverDue());
   }
+  console.log(fakeImmunization);
 
   await knex("immunizations").insert(fakeImmunization);
 };
