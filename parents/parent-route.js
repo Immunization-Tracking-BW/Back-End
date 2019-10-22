@@ -33,9 +33,9 @@ router.put("/children/:childid", (req, res) => {
   const { childid } = req.params;
   const changes = req.body;
 
-  const { firstName, lastName, dateOfBirth, socialSecuirtyNumber } = changes;
+  const { firstName, lastName, dateOfBirth, socialSecurityNumber } = changes;
 
-  if (!firstName || !lastName || !dateOfBirth || !socialSecuirtyNumber) {
+  if (!firstName || !lastName || !dateOfBirth || !socialSecurityNumber) {
     return res.status(400).json({ message: "Missing fields." });
   }
   Parent.update(childid, changes)
@@ -62,9 +62,9 @@ router.delete("/children/:childid", (req, res) => {
 router.post("/:parentid/children", (req, res) => {
   const child = req.body;
   const { parentid } = req.params;
-  const { firstName, lastName, dateOfBirth, socialSecuirtyNumber } = child;
+  const { firstName, lastName, dateOfBirth, socialSecurityNumber } = child;
 
-  if (!firstName || !lastName || !dateOfBirth || !socialSecuirtyNumber) {
+  if (!firstName || !lastName || !dateOfBirth || !socialSecurityNumber) {
     return res.status(400).json({ message: "Missing fields." });
   }
   Parent.add(parentid, child)
