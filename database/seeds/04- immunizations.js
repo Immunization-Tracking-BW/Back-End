@@ -17,11 +17,10 @@ const typesofVaccines = [
   "Rabies"
 ];
 
-const completed = [true, false];
-
-const createFakeImmunization = () => ({
+//Immunization Completed
+const createFakeImmunizationDone = () => ({
   vaccine: typesofVaccines[getRandomInt(0, 7)],
-  immunizationCompleted: completed[getRandomInt(0, 1)],
+  immunizationCompleted: true,
   date: faker.date.past(),
 
   location:
@@ -31,6 +30,25 @@ const createFakeImmunization = () => ({
     ", " +
     faker.address.state(),
   grantPermission: false,
+  nextImmunizationDate: faker.date.future(),
+  child_id: getRandomInt(1, 5),
+  provider_id: getRandomInt(1, 3)
+});
+
+//Immunization Over Due
+const createFakeImmunizationOverDue = () => ({
+  vaccine: typesofVaccines[getRandomInt(0, 7)],
+  immunizationCompleted: false,
+  date: faker.date.past(),
+
+  location:
+    faker.address.streetAddress() +
+    " " +
+    faker.address.city() +
+    ", " +
+    faker.address.state(),
+  grantPermission: false,
+  nextImmunizationDate: faker.date.recent(),
   child_id: getRandomInt(1, 5),
   provider_id: getRandomInt(1, 3)
 });
@@ -38,7 +56,8 @@ const createFakeImmunization = () => ({
 exports.seed = async function(knex, Promoise) {
   const fakeImmunization = [];
   for (let i = 0; i < 15; i++) {
-    fakeImmunization.push(createFakeImmunization());
+    fakeImmunization.push(createFakeImmunizationDone());
+    fakeImmunization.push(createFakeImmunizationOverDue());
   }
 
   await knex("immunizations").insert(fakeImmunization);
