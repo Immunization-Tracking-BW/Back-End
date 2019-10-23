@@ -3,16 +3,10 @@ exports.up = function(knex) {
     immu.increments();
 
     immu.string("vaccine").notNullable();
-    immu
-      .boolean("immunizationCompleted")
-      .defaultTo("false")
-      .notNullable();
+    immu.boolean("immunizationCompleted").notNullable();
     immu.string("date").notNullable();
     immu.string("location").notNullable();
-    immu
-      .boolean("grantPermission")
-      .defaultTo("false")
-      .notNullable();
+    immu.boolean("grantPermission").notNullable();
     immu.string("nextImmunizationDate");
     immu
       .integer("child_id")
