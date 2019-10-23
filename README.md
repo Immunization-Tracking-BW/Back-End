@@ -16,7 +16,7 @@
 | Method | Endpoint                     | Access Control | Description                                                                                          |
 | ------ | ---------------------------- | -------------- | ---------------------------------------------------------------------------------------------------- |
 | GET    | `/parent/:parentid/children` | parents        | Returns all children based on parent's id.                                                           |
-| GET    | `parent/children/:childid`   | All users      | Returns single child                                                                                 |
+| GET    | `/parent/children/:childid`   | All users      | Returns single child                                                                                 |
 | POST   | `/parent/:parentid/children` | All users      | Takes JSON with "firstName", "lastName", "dateOfBirth", and "socialSecurityNumber" and add a child   |
 | PUT    | `parent/children/:childid`   | All users      | Takes JSON with "firstName", "lastName", "dateOfBirth", and "socialSecurityNumber" and Edit a child. |
 | DEL    | `/parent/children/:childid`  | All users      | Deletes a child                                                                                      |
