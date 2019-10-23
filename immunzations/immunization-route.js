@@ -33,7 +33,6 @@ router.get("/immunization/:immunizationid", (req, res) => {
 router.post("/:childid/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
-  console.log(immuization);
 
   const { vaccine, date, location } = immuization;
 
@@ -55,14 +54,15 @@ router.put("/immunization/:immunizationid", (req, res) => {
   const { immunizationid } = req.params;
 
   const changes = req.body;
-  const { vaccine, immunizationCompleted, date, location } = changes;
 
-  if (!vaccine || !immunizationCompleted || !date || !location) {
-    res.status(400).json({ message: "Missing a field." });
-  }
+  // const { vaccine, immunizationCompleted, date, location } = changes;
+
+  // if (vaccine || !immunizationCompleted || !date || !location) {
+  //   res.status(400).json({ message: "Missing a field." });
+  // }
 
   Immuization.update(immunizationid, changes)
-    .then(udpated => {
+    .then(updated => {
       res.status(200).json({ message: "Immunization has been updated." });
     })
     .catch(err => {
