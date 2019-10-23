@@ -11,11 +11,11 @@ const createFakeChild = () => ({
   lastName: faker.name.lastName(),
   dateOfBirth: faker.date.past(),
   socialSecurityNumber:
+    faker.random.number(1000, 9999) +
+    "-" +
     faker.random.number(100, 999) +
     "-" +
-    faker.random.number(10, 99) +
-    "-" +
-    faker.random.number(100, 999),
+    faker.random.number(1000, 9999),
   parent_id: getRandomInt(1, 3)
 });
 
