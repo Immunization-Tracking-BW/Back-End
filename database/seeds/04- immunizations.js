@@ -20,7 +20,7 @@ const typesofVaccines = [
 //Immunization Completed
 const createFakeImmunizationDone = () => ({
   vaccine: typesofVaccines[getRandomInt(0, 7)],
-  immunizationCompleted: true,
+  immunizationCompleted: false,
   date: faker.date.past(),
 
   location:

@@ -23,12 +23,12 @@
 
 ### Immunization Routes
 
-| Method | Endpoint                                       | Access Control | Description                                                                                                                   |
-| ------ | ---------------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| GET    | `/child/:childid/immunization`                 | All users      | Returns a child's immunizations.                                                                                              |
-| GET    | `/child/immunization/:immunizationid`          | All users      | Returns a single immunizations.                                                                                               |
-| POST   | `/child/:childid/immunization/:immunizationid` | providers      | Takes JSON with "vaccine", "date", "location", "immunizationCompleted", and "nextImmunizationDate" and adds an imunizations.  |
-| PUT    | `/child/immunization/:immuinzationid`          | providers      | Takes JSON with "vaccine", "date", "location", "immunizationCompleted", and "nextImmunizationDate" and edits an imunizations. |
+| Method | Endpoint                                   | Access Control | Description                                                                                                                   |
+| ------ | ------------------------------------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/child/:childid/immunization`             | All users      | Returns a child's immunizations.                                                                                              |
+| GET    | `/child/immunization/:immunizationid`      | All users      | Returns a single immunizations.                                                                                               |
+| POST   | `/child/:childid/immunization/:providerid` | providers      | Takes JSON with "vaccine", "date", "location", "immunizationCompleted", and "nextImmunizationDate" and adds an imunizations.  |
+| PUT    | `/child/immunization/:immuinzationid`      | providers      | Takes JSON with "vaccine", "date", "location", "immunizationCompleted", and "nextImmunizationDate" and edits an imunizations. |
 
 ### Provider Routes
 

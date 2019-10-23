@@ -33,10 +33,11 @@ router.get("/immunization/:immunizationid", (req, res) => {
 router.post("/:childid/immunization/:providerid", (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
+  console.log(immuization);
 
-  const { vaccine, date, location, immunizationCompleted } = immuization;
+  const { vaccine, date, location } = immuization;
 
-  if (!vaccine || !date || !location || !immunizationCompleted) {
+  if (!vaccine || !date || !location) {
     res.status(400).json({ message: "Missing a field." });
   }
 
