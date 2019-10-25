@@ -6,7 +6,7 @@ const restricted = require("../auth/restricted-middleware.js");
 
 router.get("/:providerid/children", restricted, (req, res) => {
   const { providerid } = req.params;
-  console.log();
+
   Provider.get(providerid)
     .then(children => {
       res.status(200).json(children);
