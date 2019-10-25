@@ -34,12 +34,6 @@ router.post("/:childid/immunization/:providerid", restricted, (req, res) => {
   const { childid, providerid } = req.params;
   const immuization = req.body;
 
-  const { vaccine, date, location, nextImmunizationDate } = immuization;
-
-  if (!vaccine || !date || !location || !nextImmunizationDate) {
-    res.status(400).json({ message: "Missing a field." });
-  }
-
   Immuization.add(childid, providerid, immuization)
     .then(added => {
       res.status(200).json({ message: "Immunization has been added." });
