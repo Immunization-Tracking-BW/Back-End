@@ -4,7 +4,7 @@ const restricted = require("../auth/restricted-middleware.js");
 
 //Get all child link to provider
 
-router.get("/:providerid/children", (req, res) => {
+router.get("/:providerid/children", restricted, (req, res) => {
   const { providerid } = req.params;
   console.log();
   Provider.get(providerid)

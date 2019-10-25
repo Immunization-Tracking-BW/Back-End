@@ -4,7 +4,7 @@ const restricted = require("../auth/restricted-middleware.js");
 
 //Get all child of a parent
 
-router.get("/:parentid/children", (req, res) => {
+router.get("/:parentid/children", restricted, (req, res) => {
   const { parentid } = req.params;
 
   Parent.get(parentid)
@@ -16,7 +16,7 @@ router.get("/:parentid/children", (req, res) => {
     });
 });
 
-router.get("/children/:childid", (req, res) => {
+router.get("/children/:childid", restricted, (req, res) => {
   const { childid } = req.params;
 
   Parent.getBy(childid)
@@ -29,7 +29,7 @@ router.get("/children/:childid", (req, res) => {
     });
 });
 
-router.put("/children/:childid", (req, res) => {
+router.put("/children/:childid", restricted, (req, res) => {
   const { childid } = req.params;
   const changes = req.body;
 
@@ -47,7 +47,7 @@ router.put("/children/:childid", (req, res) => {
     });
 });
 
-router.delete("/children/:childid", (req, res) => {
+router.delete("/children/:childid", restricted, (req, res) => {
   const { childid } = req.params;
 
   Parent.remove(childid)
@@ -59,7 +59,7 @@ router.delete("/children/:childid", (req, res) => {
     });
 });
 
-router.post("/:parentid/children", (req, res) => {
+router.post("/:parentid/children", restricted, (req, res) => {
   const child = req.body;
   const { parentid } = req.params;
   const { firstName, lastName, dateOfBirth, socialSecurityNumber } = child;
